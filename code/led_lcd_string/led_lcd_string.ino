@@ -23,6 +23,17 @@ void setup()
   pinMode(hzNumberDownBtn, INPUT);
 }
 
+void printWhileCheck() {
+  lcd.setCursor(0,1);
+  lcd.write("Current hz: ");
+  lcd.setCursor(12, 1);
+  lcd.print(hzNumber);
+  if (hzNumber < 1000) {
+    lcd.setCursor(15, 1);
+    lcd.print(" ");
+  }
+}
+
 void loop() {
   //the speaker
   tone(SpeakerOutput, hzNumber);
@@ -48,6 +59,5 @@ void loop() {
   }
   lastButtonStateDown = buttonStateDown;
   // LCD
-  lcd.setCursor(0,1);
-  lcd.write(12);
+  printWhileCheck();
 }
